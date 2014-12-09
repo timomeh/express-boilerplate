@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var debug = require('debug')('adlib-fm');
+var app = require('../app');
+
+
+app.set('port', process.env.PORT || 3000);
+app.disable('x-powered-by');
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
