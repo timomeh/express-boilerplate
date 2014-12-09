@@ -93,11 +93,51 @@ module.exports = [
 ];
 ```
 
+#### More on Routes
+
+You can chain multiple functions. The following example will first execute `user.auth` and when `next` is called it will proceed to `user.show`.
+
+```javascript
+module.exports = [
+  'GET /user/me user.auth user.show'
+];
+```
+
+You have access to all of expressjs' [Router Features](http://expressjs.com/4x/api.html#router). `USE` and `ALL` work like the other parameters.
+
+The following example will execute `user.auth` before executing `user.show`.
+
+```javascript
+module.exports = [
+  'USE /user user.auth',
+  'GET /user/me user.show'
+];
+```
+
+You can also use `PARAM`. [See here for more details how to use this.](http://expressjs.com/4x/api.html#router.param)
+
+```javascript
+module.exports = [
+  'PARAM user_id user.auth',
+  'GET /user/:user_id user.show'
+];
+```
+
+Every item (string) in the array is a shorthand for a object notation.
+
+```javascript
+module.exports = [
+  'GET / page.home',
+  {
+    method: 'POST',
+    path: '/person',
+    exec: 'person.validate person.create'
+  }
+];
+```
+
+In this way your `path` can also be a regular expression.
+
 ### Config
 
 In `/config/db.js` you will see a small database connection configuration. This refers to [this part](https://github.com/balderdashy/waterline/blob/master/example/express/express-example.js#L39) of the Waterline express example.
-
-Coming soon
------------
-
-* Better support for `express.Router()`'s great features
