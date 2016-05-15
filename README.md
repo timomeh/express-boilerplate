@@ -1,6 +1,8 @@
 expressjs Boilerplate
 ========
 
+**BEWARE: This is very old code. I don't recommend using this structure anymore.**
+
 This is a boilerplate for [expressjs](https://github.com/strongloop/express), using the [Waterline ORM](https://github.com/balderdashy/waterline) with the [MongoDB](http://www.mongodb.org/) [adapter](https://github.com/balderdashy/sails-mongo).
 
 Besides the MVC-_ish_ pattern the boilerplate **preloads your models**, **saves them in a global variable** and **maps your routes** based on a simple text format.
